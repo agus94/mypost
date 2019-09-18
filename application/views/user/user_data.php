@@ -15,10 +15,10 @@
 
   <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Data Users</h3>
+        <h3 class="box-title">Add Users</h3>
         <div class="pull-right">
             <a href="<?= site_url('user/add'); ?>" class="btn btn-primary btn-flat">
-               <i class="fa fa-user-plus">Create</i>
+               <i class="fa fa-user-plus"></i>Create
             </a>
         </div>
     </div>
@@ -46,10 +46,10 @@
                     <td><?= $data->level == 1 ? "Admin" : "Kasir"; ?></td>
                     <td>
                         <a href="<?= site_url('user/edit'); ?>" class="btn btn-primary btn-xs">
-                            <i class="fa fa-pencil">Update</i>
+                            <i class="fa fa-pencil"></i>Update
                         </a>
                         <a href="<?= site_url('user/hapus'); ?>" class="btn btn-danger btn-xs">
-                            <i class="fa fa-trash">Delete</i>
+                            <i class="fa fa-trash"></i>Delete
                         </a>
                     </td>
                 </tr>
