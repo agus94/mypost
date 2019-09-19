@@ -24,15 +24,16 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-md-offset-4">
+                <?= validation_errors(); ?>
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="fullname">Name *</label>
-                        <input type="text" name="fullname" id="fullname" class="form-control">
+                        <input type="text" name="fullname" id="fullname" value="<?= set_value('fullname') ?>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="username">Username *</label>
-                        <input type="text" name="username" id="username" class="form-control">
+                        <input type="text" name="username" id="username" value="<?= set_value('username') ?>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">Password *</label>
