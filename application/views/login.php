@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?= base_url('assets'); ?>/index2.html">my<b>Pos</b> By NAAI</a>
+    <a href="<?= base_url('auth/login'); ?>">my<b>Pos</b> By NAAI</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
