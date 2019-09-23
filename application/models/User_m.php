@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_m extends CI_Model {
 
+    
+    // function login
     public function login($post) {
         $this->db->select('*');
         $this->db->from('user');
@@ -12,6 +14,8 @@ class User_m extends CI_Model {
         return $query;
     }
 
+
+    // function get
     public function get($id = null)
     {
         $this->db->from('user');
@@ -22,6 +26,8 @@ class User_m extends CI_Model {
         return $query;
     }
 
+
+    // function add
     public function add($post)
     {
         $params['name'] = $post['fullname'];
@@ -33,6 +39,8 @@ class User_m extends CI_Model {
         $this->db->insert('user', $params);
     }
 
+
+    // function delete
     public function del($id)
     {
         $this->db->where('user_id', $id);
