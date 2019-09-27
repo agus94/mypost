@@ -196,7 +196,7 @@
             <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> Sales</a></li>
             <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Stock</a></li>
           </ul>
-          <?php if($this->session->userdata('level') == 1 ) { ?>
+          <?php if($this->fungsi->user_login()->level == 1) { ?>
         <li class="header">Setting</li>
         <li><a href="<?= site_url('user'); ?>"><i class="fa fa-user"></i> <span>User</span></a></li>
         <?php } ?>

@@ -8,6 +8,7 @@ class User extends CI_Controller {
         parent::__construct();
 
         check_not_login();
+        check_admin();
         $this->load->model('user_m');
         $this->load->library('form_validation');
     }
@@ -18,6 +19,7 @@ class User extends CI_Controller {
         $data['row'] = $this->user_m->get();
 		$this->template->load('template', 'user/user_data' , $data);
     }
+
 
     // function add
     public function add()
@@ -49,6 +51,7 @@ class User extends CI_Controller {
         }
 
     }
+
 
     // function edit
     public function edit($id)

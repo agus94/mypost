@@ -39,8 +39,8 @@
                         <?= form_error('username'); ?>
                     </div>
                     <div class="form-group  <?= form_error('password') ? 'has-error' : null; ?>">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" value="<?= $this->input->post('password'); ?>" id="password" class="form-control">
+                        <label for="password">Password</label><small>(Biarkan kosong jika tidak diganti)</small>
+                        <input type="password" name="password"  id="password" class="form-control">
                         <?= form_error('password'); ?>
                     </div>
                     <div class="form-group <?= form_error('passconf') ? 'has-error' : null; ?>">
