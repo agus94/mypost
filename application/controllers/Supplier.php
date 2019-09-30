@@ -9,15 +9,45 @@ class Supplier extends CI_Controller {
 
         check_not_login();
         $this->load->model('supplier_m');
-    }
-
-
+	}
+	
+	
 	public function index()
 	{
 		$data['row'] = $this->supplier_m->get();
 		$this->template->load('template', 'supplier/supplier_data', $data);
 	}
 	
+
+	public function add()
+	{
+		$supplier = new stdClass();
+		$supplier->supplier_id = null;
+		$supplier->name = null;
+		$supplier->phone = null;
+		$supplier->address = null;
+		$supplier->description = null;
+		$data = array(
+			'page' => 'add',
+			'row' => $supplier
+		);
+		$this->template->load('template', 'supplier/supplier_form', $data);
+	}
+
+
+	public function process()
+	{
+		$post = $this->input->post(null, TRUE);
+		if(isset($_POST['add'])) {
+			$this->supplier_m->add($post);
+		}
+
+		if ($this->db->affected_rows() > 0) {
+			echo "<script>alert('Data berhasil disimpan');</script>";
+		}
+			echo "<script> window.location='".site_url('supplier')."';</script>";
+	}
+
 
 	public function del($id)
 	{

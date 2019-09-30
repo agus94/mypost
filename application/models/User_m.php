@@ -39,6 +39,8 @@ class User_m extends CI_Model {
         $this->db->insert('user', $params);
     }
 
+
+    // function edit
     public function edit($post)
     {
         $params['name'] = $post['fullname'];
