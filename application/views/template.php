@@ -136,26 +136,18 @@
         <li class="header">MAIN NAVIGATION</li>
 
     <li>
-      <a href="<?= site_url('dashboard'); ?>">
-        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-      </a>
+      <a href="<?= site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
 		</li>
 		
 		<li>
-          <a href="<?= site_url('supplier'); ?>">
-		  <i class="fa fa-truck"></i> 
-		  <span>Supplier</span>
-          </a>
+      <a href="<?= site_url('supplier'); ?>"><i class="fa fa-truck"></i><span>Supplier</span></a>
 		</li>
 		
-		<li class="treeview">
-          <a href="#">
-		  <i class="fa fa-users"></i> 
-		  <span>Customers</span>
-          </a>
-        </li>
+		<li>
+      <a href="<?= site_url('customer'); ?>"><i class="fa fa-users"></i><span>Customers</span></a>
+    </li>
 		
-        <li class="treeview">
+    <li class="treeview">
           <a href="#">
 		  <i class="fa fa-archive"></i>
             <span>Products</span>
