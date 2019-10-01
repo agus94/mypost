@@ -15,7 +15,7 @@
 
   <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Add Users</h3>
+        <h3 class="box-title"><?= ucfirst($page); ?> Supplier</h3>
         <div class="pull-right">
             <a href="<?= site_url('supplier'); ?>" class="btn btn-warning btn-flat">
                <i class="fa fa-undo"></i>Back
@@ -29,6 +29,7 @@
                 <form action="<?= site_url('supplier/process'); ?>" method="POST">
                     <div class="form-group">
                         <label for="supplier_name">Supplier Name *</label>
+                        <input type="hidden" name="id" value="<?= $row->supplier_id; ?>">
                         <input type="text" name="supplier_name" id="supplier_name" value="<?= $row->name; ?>" class="form-control" required>
                     </div>
                     <div class="form-group">

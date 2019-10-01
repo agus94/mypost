@@ -34,12 +34,31 @@ class Supplier extends CI_Controller {
 		$this->template->load('template', 'supplier/supplier_form', $data);
 	}
 
+	
+	public function edit($id)
+	{
+		$query = $this->supplier_m->get($id);
+		if($query->num_rows() > 0) {
+			$supplier = $query->row();
+			$data = array(
+				'page' => 'edit',
+				'row' => $supplier
+			);
+			$this->template->load('template', 'supplier/supplier_form', $data);
+		} else {
+			echo "<script>alert('Data tidak ditemukan');</script>";
+			echo "<script> window.location='".site_url('supplier')."';</script>";
+		}
+	}
+
 
 	public function process()
 	{
 		$post = $this->input->post(null, TRUE);
 		if(isset($_POST['add'])) {
 			$this->supplier_m->add($post);
+		} elseif (isset($_POST['edit'])) {
+			$this->supplier_m->edit($post);
 		}
 
 		if ($this->db->affected_rows() > 0) {

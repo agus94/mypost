@@ -15,7 +15,7 @@
 
   <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Add Supplier</h3>
+        <h3 class="box-title">Data Supplier</h3>
         <div class="pull-right">
             <a href="<?= site_url('supplier/add'); ?>" class="btn btn-primary btn-flat">
                <i class="fa fa-plus"></i>Create
@@ -44,7 +44,10 @@
                     <td><?= $data->phone; ?></td>
                     <td><?= $data->address; ?></td>
                     <td><?= $data->description; ?></td>
-                    <td>
+                    <td class="text-center" width="160px">
+                        <a href="<?= site_url('supplier/edit/'.$data->supplier_id); ?>" class="btn btn-primary btn-xs">
+                            <i class="fa fa-pencil"></i>Update
+                        </a>
                         <a href="<?= site_url('supplier/del/'.$data->supplier_id); ?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
                             <i class="fa fa-trash"></i>Delete
                         </a>
