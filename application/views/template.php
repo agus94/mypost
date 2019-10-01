@@ -156,9 +156,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> Categories</a></li>
-            <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Units</a></li>
-            <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Items</a></li>
+            <li><a href="<?= site_url('category'); ?>"><i class="fa fa-circle-o"></i> Categories</a></li>
+            <li><a href="<?= site_url('unit'); ?>"><i class="fa fa-circle-o"></i> Units</a></li>
           </ul>
 		</li>
 		
