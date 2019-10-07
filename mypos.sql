@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 01, 2019 at 04:29 PM
+-- Generation Time: Oct 07, 2019 at 04:36 PM
 -- Server version: 10.1.41-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -63,7 +63,30 @@ CREATE TABLE `p_category` (
 --
 
 INSERT INTO `p_category` (`category_id`, `name`, `created`, `updated`) VALUES
-(3, 'test1', '2019-10-01 16:27:55', '2019-10-01 16:28:05');
+(3, 'test1test', '2019-10-01 16:27:55', '2019-10-07 14:01:43'),
+(4, 'test2', '2019-10-02 08:56:48', NULL),
+(5, 'test3', '2019-10-07 14:01:04', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_unit`
+--
+
+CREATE TABLE `p_unit` (
+  `unit_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `p_unit`
+--
+
+INSERT INTO `p_unit` (`unit_id`, `name`, `created`, `updated`) VALUES
+(3, 'kg', '2019-10-01 16:27:55', '2019-10-07 14:36:12'),
+(4, 'grosir', '2019-10-02 08:56:48', '2019-10-07 14:36:22');
 
 -- --------------------------------------------------------
 
@@ -131,6 +154,12 @@ ALTER TABLE `p_category`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `p_unit`
+--
+ALTER TABLE `p_unit`
+  ADD PRIMARY KEY (`unit_id`);
+
+--
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
@@ -155,7 +184,12 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `p_category`
 --
 ALTER TABLE `p_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `p_unit`
+--
+ALTER TABLE `p_unit`
+  MODIFY `unit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `supplier`
 --
