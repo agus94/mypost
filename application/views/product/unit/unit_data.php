@@ -1,24 +1,26 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Users
-    <small>Pengguna</small>
+    Units
+    <small>Satuan Barang</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
-    <li class="active">Users</li>
+    <li class="active">Units</li>
   </ol>
 </section>
 
 <!-- Main content -->
 <section class="content">
 
+<?php $this->view('messages'); ?>
+
   <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Add Users</h3>
+        <h3 class="box-title">Data Units</h3>
         <div class="pull-right">
-            <a href="<?= site_url('user/add'); ?>" class="btn btn-primary btn-flat">
-               <i class="fa fa-user-plus"></i>Create
+            <a href="<?= site_url('unit/add'); ?>" class="btn btn-primary btn-flat">
+               <i class="fa fa-plus"></i>Create
             </a>
         </div>
     </div>
@@ -27,10 +29,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Username</th>
                     <th>Name</th>
-                    <th>Adress</th>
-                    <th>Level</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -40,20 +39,15 @@
                 foreach ($row->result() as $key => $data) { ?>
                 <tr>
                     <td style="width:5%"><?= $no++; ?>.</td>
-                    <td><?= $data->username; ?></td>
                     <td><?= $data->name; ?></td>
-                    <td><?= $data->address; ?></td>
-                    <td><?= $data->level == 1 ? "Admin" : "Kasir"; ?></td>
-                    <td>
-                        <form action="<?= site_url('user/del'); ?>" method="post">
-                        <a href="<?= site_url('user/edit/'.$data->user_id); ?>" class="btn btn-primary btn-xs">
+
+                    <td class="text-center" width="160px">
+                        <a href="<?= site_url('unit/edit/'.$data->unit_id); ?>" class="btn btn-primary btn-xs">
                             <i class="fa fa-pencil"></i>Update
                         </a>
-                            <input type="hidden" name="user_id" value="<?= $data->user_id; ?>">
-                            <button onclick="return confirm('Apakah Anda yakin?')" class="btn btn-danger btn-xs">
-                                <i class="fa fa-trash"></i>Delete
-                            </button>
-                        </form>
+                        <a href="<?= site_url('unit/del/'.$data->unit_id); ?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
+                            <i class="fa fa-trash"></i>Delete
+                        </a>
                     </td>
                 </tr>
                 <?php } ?>
