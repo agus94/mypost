@@ -136,52 +136,54 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
+    
         <li class="header">MAIN NAVIGATION</li>
 
-    <li>
-      <a href="<?= site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
-		</li>
-		
-		<li>
-      <a href="<?= site_url('supplier'); ?>"><i class="fa fa-truck"></i><span>Supplier</span></a>
-		</li>
-		
-		<li>
-      <a href="<?= site_url('customer'); ?>"><i class="fa fa-users"></i><span>Customers</span></a>
-    </li>
-		
-    <li class="treeview">
-          <a href="#">
-		  <i class="fa fa-archive"></i>
-            <span>Products</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= site_url('category'); ?>"><i class="fa fa-circle-o"></i> Categories</a></li>
-            <li><a href="<?= site_url('unit'); ?>"><i class="fa fa-circle-o"></i> Units</a></li>
-          </ul>
-		</li>
-		
-		<li class="treeview">
-          <a href="#">
-		  <i class="fa fa-shopping-cart"></i>
-            <span>Transaction</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> Sales</a></li>
-            <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Stock In</a></li>
-            <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Stock Out</a></li>
-          </ul>
-		</li>
+        <li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : ''; ?>>
+          <a href="<?= site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+        </li>
+        
+        <li <?= $this->uri->segment(1) == 'supplier' ? 'class="active"' : ''; ?>>
+          <a href="<?= site_url('supplier'); ?>"><i class="fa fa-truck"></i><span>Supplier</span></a>
+        </li>
+        
+        <li <?= $this->uri->segment(1) == 'customer' ? 'class="active"' : ''; ?>>
+          <a href="<?= site_url('customer'); ?>"><i class="fa fa-users"></i><span>Customers</span></a>
+        </li>
+        
+        <li class="treeview <?= $this->uri->segment(1) == 'category' || $this->uri->segment(1) == 'unit'  ? 'active' : ''; ?>">
+              <a href="#">
+          <i class="fa fa-archive"></i>
+                <span>Products</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li <?= $this->uri->segment(1) == 'category'  ? 'class="active"' : ''; ?>><a href="<?= site_url('category'); ?>"><i class="fa fa-circle-o"></i> Categories</a></li>
+                <li <?= $this->uri->segment(1) == 'unit'  ? 'class="active"' : ''; ?>><a href="<?= site_url('unit'); ?>"><i class="fa fa-circle-o"></i> Units</a></li>
+                <li><a href="<?= site_url('item'); ?>"><i class="fa fa-circle-o"></i> Items</a></li>
+              </ul>
+        </li>
+        
+        <li class="treeview">
+              <a href="#">
+          <i class="fa fa-shopping-cart"></i>
+                <span>Transaction</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> Sales</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Stock In</a></li>
+                <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Stock Out</a></li>
+              </ul>
+        </li>
 		
         <li class="treeview">
           <a href="#">
-		  <i class="fa fa-pie-chart"></i>
+          <i class="fa fa-pie-chart"></i>
             <span>Reports</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -193,7 +195,7 @@
           </ul>
           <?php if($this->fungsi->user_login()->level == 1) { ?>
         <li class="header">Setting</li>
-        <li><a href="<?= site_url('user'); ?>"><i class="fa fa-user"></i> <span>User</span></a></li>
+        <li <?= $this->uri->segment(1) == 'user' ? 'class="active"' : ''; ?>><a href="<?= site_url('user'); ?>"><i class="fa fa-user"></i> <span>User</span></a></li>
         <?php } ?>
       </ul>
     </section>
