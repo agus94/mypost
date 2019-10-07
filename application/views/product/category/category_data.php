@@ -13,6 +13,8 @@
 <!-- Main content -->
 <section class="content">
 
+<?php $this->view('messages'); ?>
+
   <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Data Categories</h3>
@@ -36,7 +38,7 @@
                 $no = 1;
                 foreach ($row->result() as $key => $data) { ?>
                 <tr>
-                    <td><?= $no++; ?>.</td>
+                    <td style="width:5%"><?= $no++; ?>.</td>
                     <td><?= $data->name; ?></td>
 
                     <td class="text-center" width="160px">

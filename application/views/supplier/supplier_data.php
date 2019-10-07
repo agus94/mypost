@@ -39,7 +39,7 @@
                 $no = 1;
                 foreach ($row->result() as $key => $data) { ?>
                 <tr>
-                    <td><?= $no++; ?>.</td>
+                    <td style="width:5%"><?= $no++; ?>.</td>
                     <td><?= $data->name; ?></td>
                     <td><?= $data->phone; ?></td>
                     <td><?= $data->address; ?></td>
