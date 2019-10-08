@@ -25,6 +25,7 @@ class item extends CI_Controller {
         $item->item_id = null;
         $item->barcode = null;
         $item->name = null;
+        $item->category_id = null;
         $item->price = null;
 
         $query_category = $this->category_m->get();
