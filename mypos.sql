@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 07, 2019 at 04:36 PM
+-- Generation Time: Oct 08, 2019 at 03:39 PM
 -- Server version: 10.1.41-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -63,9 +63,34 @@ CREATE TABLE `p_category` (
 --
 
 INSERT INTO `p_category` (`category_id`, `name`, `created`, `updated`) VALUES
-(3, 'test1test', '2019-10-01 16:27:55', '2019-10-07 14:01:43'),
-(4, 'test2', '2019-10-02 08:56:48', NULL),
-(5, 'test3', '2019-10-07 14:01:04', NULL);
+(3, 'mobil', '2019-10-01 16:27:55', '2019-10-08 09:22:24'),
+(4, 'Makanan', '2019-10-02 08:56:48', '2019-10-08 10:33:35'),
+(5, 'Minuman', '2019-10-07 14:01:04', '2019-10-08 13:24:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_item`
+--
+
+CREATE TABLE `p_item` (
+  `item_id` int(11) NOT NULL,
+  `barcode` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
+  `unit_id` int(11) NOT NULL,
+  `price` int(11) DEFAULT NULL,
+  `stock` int(10) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `p_item`
+--
+
+INSERT INTO `p_item` (`item_id`, `barcode`, `name`, `category_id`, `unit_id`, `price`, `stock`, `created`, `updated`) VALUES
+(1, 'A001', 'Susu', 5, 3, 1500, 0, '2019-10-08 10:34:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -86,7 +111,7 @@ CREATE TABLE `p_unit` (
 
 INSERT INTO `p_unit` (`unit_id`, `name`, `created`, `updated`) VALUES
 (3, 'kg', '2019-10-01 16:27:55', '2019-10-07 14:36:12'),
-(4, 'grosir', '2019-10-02 08:56:48', '2019-10-07 14:36:22');
+(4, 'buah', '2019-10-02 08:56:48', '2019-10-08 10:33:50');
 
 -- --------------------------------------------------------
 
@@ -154,6 +179,14 @@ ALTER TABLE `p_category`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `p_item`
+--
+ALTER TABLE `p_item`
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `unit_id` (`unit_id`);
+
+--
 -- Indexes for table `p_unit`
 --
 ALTER TABLE `p_unit`
@@ -186,10 +219,15 @@ ALTER TABLE `customer`
 ALTER TABLE `p_category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `p_item`
+--
+ALTER TABLE `p_item`
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `p_unit`
 --
 ALTER TABLE `p_unit`
-  MODIFY `unit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `unit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `supplier`
 --
@@ -200,6 +238,17 @@ ALTER TABLE `supplier`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `p_item`
+--
+ALTER TABLE `p_item`
+  ADD CONSTRAINT `p_item_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `p_category` (`category_id`),
+  ADD CONSTRAINT `p_item_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `p_unit` (`unit_id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
