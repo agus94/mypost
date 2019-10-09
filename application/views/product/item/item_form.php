@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Price *</label>            
-                        <input type="number" name="price" id="price" value="<?= $row->name; ?>" class="form-control" required>
+                        <input type="number" name="price" id="price" value="<?= $row->price; ?>" class="form-control" required>
                     </div>
 
                     <div class="form-group">
