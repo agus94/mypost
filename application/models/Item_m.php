@@ -45,6 +45,20 @@ class item_m extends CI_Model {
     }
 
 
+    function check_barcode($code, $id = null)
+    {
+        $this->db->from('p_item');
+        $this->db->where('barcode', $code);
+        if ($id != null) {
+            $this->db->where('item_id !=', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
+
+
+
     // function del
     public function del($id)
     {
