@@ -27,8 +27,9 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <!-- <?= validation_errors(); ?> -->
-                <form action="<?= site_url('item/process'); ?>" method="POST">
+
+                <?php echo form_open_multipart('item/process') ?>
+                
                     <div class="form-group">
                         <label for="barcode">Barcode *</label>
                         <input type="hidden" name="id" value="<?= $row->item_id; ?>">
@@ -54,6 +55,10 @@
                     <div class="form-group">
                         <label for="price">Price *</label>            
                         <input type="number" name="price" id="price" value="<?= $row->price; ?>" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image *</label>            
+                        <input type="file" name="image" id="image">
                     </div>
 
                     <div class="form-group">
