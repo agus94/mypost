@@ -57,8 +57,17 @@
                         <input type="number" name="price" id="price" value="<?= $row->price; ?>" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="image">Image *</label>            
+                        <label for="image">Image *</label> 
+                        <?php if($page == 'edit') {
+                            if ($row->image != null) { ?>
+                                <div style="margin-botton:4px">
+                                <img src="<?=base_url('uploads/product/'.$row->image)?>" alt="" style="width:80%">;
+                                </div>
+                            <?php
+                            }
+                        } ?>           
                         <input type="file" name="image" id="image">
+                        <small>(Biarkan kosong jika tidak <?= $page == 'edit' ? 'diganti' : 'ada' ?>)</small>
                     </div>
 
                     <div class="form-group">
