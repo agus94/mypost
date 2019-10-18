@@ -48,7 +48,7 @@
                     <td>
                         <?= $data->barcode; ?><br>
                         <a href="<?= site_url('item/barcode_qrcode/'.$data->item_id); ?>" class="btn btn-default btn-xs">
-                            Generate<i class="fa fa-barcode"></i>
+                            Generate <i class="fa fa-barcode"></i> <i class="fa fa-qrcode"></i>
                         </a>
                     </td>
                     <td><?= $data->name; ?></td>

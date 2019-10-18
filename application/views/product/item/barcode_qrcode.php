@@ -13,11 +13,9 @@
 <!-- Main content -->
 <section class="content">
 
-<?php $this->view('messages'); ?>
-
   <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Barcode Generator</h3>
+        <h3 class="box-title">Barcode Generator <i class="fa fa-barcode"></i></h3>
         <div class="pull-right">
             <a href="<?= site_url('item'); ?>" class="btn btn-warning btn-flat">
                <i class="fa fa-undo"></i>Back
@@ -27,12 +25,27 @@
     <div class="box-body">
        <?php 
         $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-        echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('$row->barcode', $generator::TYPE_CODE_128)) . '">';
+        echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('$row->barcode', $generator::TYPE_CODE_128)) . '" style="width:200px">';
         ?>
         <br>
         <?= $row->barcode;?>
     </div>
   </div>
+
+    <div class="box">
+      <div class="box-header with-border">
+          <h3 class="box-title">QR-Code Generator <i class="fa fa-qrcode"></i></h3>
+      </div>
+      <div class="box-body">
+      <?php 
+        $qrCode = new Endroid\QrCode\QrCode($row->barcode);
+        $qrCode->writeFile('uploads/qr-code/item-'.$row->item_id.'.png');
+      ?>
+        <img src="<?= base_url('uploads/qr-code/item-'.$row->item_id.'.png') ?>" alt="" style="width:200px">
+        <br>
+        <?= $row->barcode;?>
+    </div>
+    </div>
 
 </section>
 <!-- /.content -->
