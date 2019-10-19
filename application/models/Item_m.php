@@ -51,6 +51,14 @@ class item_m extends CI_Model {
     }
 
 
+    // function del
+    public function del($id)
+    {
+        $this->db->where('item_id', $id);
+        $this->db->delete('p_item');
+    }
+
+
     function check_barcode($code, $id = null)
     {
         $this->db->from('p_item');
@@ -63,13 +71,9 @@ class item_m extends CI_Model {
     }
 
 
-    // function del
-    public function del($id)
+    function barcode_print() 
     {
-        $this->db->where('item_id', $id);
-        $this->db->delete('p_item');
+        $this->fungsi->PdfGenerator('coba', 'coba');
     }
-
-
 
 }
