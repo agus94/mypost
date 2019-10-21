@@ -48,6 +48,10 @@
         <img src="<?= base_url('uploads/qr-code/item-'.$row->item_id.'.png') ?>" alt="" style="width:200px">
         <br>
         <?= $row->barcode;?>
+        <br><br>
+        <a href="<?= site_url('item/qrcode_print/'.$row->item_id); ?>" target="blank" class="btn btn-default btn-sm">
+            <i class="fa fa-print"></i>Print
+        </a>
     </div>
     </div>
 
