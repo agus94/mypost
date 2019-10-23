@@ -40,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <!-- <?php 
                 $no = 1;
                 foreach ($row->result() as $key => $data) { ?>
                 <tr>
@@ -71,7 +71,7 @@
                         </a>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php } ?> -->
             </tbody>
         </table>
     </div>
@@ -79,3 +79,22 @@
 
 </section>
 <!-- /.content -->
+
+<script>
+$(document).ready(function() {
+  $('#table1').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+        "url": "<?= site_url('item/get_ajax'); ?>",
+        "type": "POST"
+    },
+    "columnDefs": [
+        {
+            "targets": [5, 6],
+            "className": 'text-right',
+        }
+    ]
+  })
+})
+</script>
