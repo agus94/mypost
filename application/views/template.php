@@ -175,7 +175,7 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> Sales</a></li>
+                <li><a href="<?= site_url('stock'); ?>"><i class="fa fa-circle-o"></i> Sales</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Stock In</a></li>
                 <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Stock Out</a></li>
               </ul>
