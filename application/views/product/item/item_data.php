@@ -93,7 +93,15 @@ $(document).ready(function() {
         {
             "targets": [5, 6],
             "className": 'text-right',
-        }
+        },
+        {
+            "targets": [7, -1],
+            "className": 'text-center',
+        },
+        {
+            "targets": [0, 7, -1],
+            "orderable": false,
+        },
     ]
   })
 })
