@@ -54,7 +54,7 @@
                     <td><?= $data->name; ?></td>
                     <td><?= $data->category_name; ?></td>
                     <td><?= $data->unit_name; ?></td>
-                    <td><?= $data->price; ?></td>
+                    <td><?= indo_currency($data->price); ?></td>
                     <td><?= $data->stock; ?></td>
                     <td>
                         <?php if($data->image != null) { ?>

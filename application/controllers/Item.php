@@ -23,7 +23,7 @@ class item extends CI_Controller {
             $row[] = $item->name;
             $row[] = $item->category_name;
             $row[] = $item->unit_name;
-            $row[] = $item->price;
+            $row[] = indo_currency($item->price);
             $row[] = $item->stock;
             $row[] = $item->image != null ? '<img src="'.base_url('uploads/product/'.$item->image).'" class="img" style="width:100px">' : null;
             // add html for action
