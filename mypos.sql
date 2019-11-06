@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 08, 2019 at 03:39 PM
+-- Generation Time: Nov 06, 2019 at 04:11 PM
 -- Server version: 10.1.41-MariaDB-0ubuntu0.18.04.1
--- PHP Version: 7.2.19-0ubuntu0.18.04.2
+-- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -80,6 +80,7 @@ CREATE TABLE `p_item` (
   `category_id` int(11) NOT NULL,
   `unit_id` int(11) NOT NULL,
   `price` int(11) DEFAULT NULL,
+  `image` varchar(100) DEFAULT NULL,
   `stock` int(10) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime DEFAULT NULL
@@ -89,8 +90,10 @@ CREATE TABLE `p_item` (
 -- Dumping data for table `p_item`
 --
 
-INSERT INTO `p_item` (`item_id`, `barcode`, `name`, `category_id`, `unit_id`, `price`, `stock`, `created`, `updated`) VALUES
-(1, 'A001', 'Susu', 5, 3, 1500, 0, '2019-10-08 10:34:16', NULL);
+INSERT INTO `p_item` (`item_id`, `barcode`, `name`, `category_id`, `unit_id`, `price`, `image`, `stock`, `created`, `updated`) VALUES
+(1, 'A001', 'Susu', 5, 3, 100, 'item-191018-b93f199fc7.jpeg', 0, '2019-10-08 10:34:16', '2019-10-18 11:24:48'),
+(3, 'A003', 'Permen enak', 4, 4, 3000, NULL, 20, '2019-10-14 14:25:08', NULL),
+(4, 'A004', 'Permen susu', 4, 4, 500, 'item-191018-a411f8bfb2.jpeg', 10, '2019-10-14 14:29:45', '2019-10-18 13:08:13');
 
 -- --------------------------------------------------------
 
@@ -141,6 +144,32 @@ INSERT INTO `supplier` (`supplier_id`, `name`, `phone`, `address`, `description`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t_stock`
+--
+
+CREATE TABLE `t_stock` (
+  `stock_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `type` enum('in','out') NOT NULL,
+  `detail` varchar(200) NOT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `qty` int(10) NOT NULL,
+  `date` date NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t_stock`
+--
+
+INSERT INTO `t_stock` (`stock_id`, `item_id`, `type`, `detail`, `supplier_id`, `qty`, `date`, `created`, `user_id`) VALUES
+(1, 3, 'in', 'kulakan', 1, 20, '2019-11-06', '2019-11-06 16:05:05', 1),
+(2, 4, 'in', 'kulakan', 2, 10, '2019-11-06', '2019-11-06 16:07:08', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -160,7 +189,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `address`, `level`) VALUES
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Nur Achmad Agus Ismail', 'Mojokerto', 1),
 (2, 'kasir1', '874c0ac75f323057fe3b7fb3f5a8a41df2b94b1d', 'Fiqih', 'Pasuruan', 2),
-(5, 'agus1994', '926d25da04429a0cf2e8113409d3fb4caa11f132', 'Nur Achmad Agus Ismail', 'Mojokerto', 2);
+(5, 'agus1994', '926d25da04429a0cf2e8113409d3fb4caa11f132', 'Nur Achmad Agus Ismail', 'Mojokerto', 1);
 
 --
 -- Indexes for dumped tables
@@ -199,6 +228,15 @@ ALTER TABLE `supplier`
   ADD PRIMARY KEY (`supplier_id`);
 
 --
+-- Indexes for table `t_stock`
+--
+ALTER TABLE `t_stock`
+  ADD PRIMARY KEY (`stock_id`),
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `supplier_id` (`supplier_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -222,7 +260,7 @@ ALTER TABLE `p_category`
 -- AUTO_INCREMENT for table `p_item`
 --
 ALTER TABLE `p_item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `p_unit`
 --
@@ -233,6 +271,11 @@ ALTER TABLE `p_unit`
 --
 ALTER TABLE `supplier`
   MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `t_stock`
+--
+ALTER TABLE `t_stock`
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
@@ -248,6 +291,14 @@ ALTER TABLE `user`
 ALTER TABLE `p_item`
   ADD CONSTRAINT `p_item_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `p_category` (`category_id`),
   ADD CONSTRAINT `p_item_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `p_unit` (`unit_id`);
+
+--
+-- Constraints for table `t_stock`
+--
+ALTER TABLE `t_stock`
+  ADD CONSTRAINT `t_stock_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `p_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `t_stock_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`),
+  ADD CONSTRAINT `t_stock_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
