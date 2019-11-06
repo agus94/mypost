@@ -104,16 +104,8 @@ class item_m extends CI_Model {
         $this->db->where('item_id', $post['id']);
         $this->db->update('p_item', $params);
     }
-
-
-    // function del
-    public function del($id)
-    {
-        $this->db->where('item_id', $id);
-        $this->db->delete('p_item');
-    }
-
-
+    
+    
     function check_barcode($code, $id = null)
     {
         $this->db->from('p_item');
@@ -124,6 +116,21 @@ class item_m extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
+    
+    
+    // function del
+    public function del($id)
+    {
+        $this->db->where('item_id', $id);
+        $this->db->delete('p_item');
+    }
 
 
+    function update_stock_in($data)
+    {
+        $qty = $data['qty'];
+        $id = $data['item_id'];
+        $sql = "UPDATE p_item SET stock = stock + '$qty' WHERE item_id = '$id'";
+        $this->db->query($sql);
+    }
 }
