@@ -18,7 +18,7 @@
     <div class="box-header with-border">
         <h3 class="box-title">Add Stock In</h3>
         <div class="pull-right">
-            <a href="<?= site_url('category'); ?>" class="btn btn-warning btn-flat">
+            <a href="<?= site_url('stock/in/'); ?>" class="btn btn-warning btn-flat">
                <i class="fa fa-undo"></i>Back
             </a>
         </div>

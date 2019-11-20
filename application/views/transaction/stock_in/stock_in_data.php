@@ -20,7 +20,7 @@
     <div class="box-header with-border">
         <h3 class="box-title">Data Stock In</h3>
         <div class="pull-right">
-            <a href="<?= site_url('stock/add'); ?>" class="btn btn-primary btn-flat">
+            <a href="<?= site_url('stock/in/add'); ?>" class="btn btn-primary btn-flat">
                <i class="fa fa-plus"></i>Add Stock In
             </a>
         </div>
@@ -44,9 +44,9 @@
                 <tr>
                     <td style="width:5%"><?= $no++; ?>.</td>
                     <td><?= $data->barcode; ?></td>
-                    <td><?= $data->name; ?></td>
-                    <td><?= $data->qty; ?></td>
-                    <td><?= $data->date; ?></td>
+                    <td><?= $data->item_name; ?></td>
+                    <td class="text-right"><?= $data->qty; ?></td>
+                    <td class="text-center"><?= indo_date($data->date); ?></td>
                     <td class="text-center" width="160px">
                         <a  class="btn btn-default btn-xs">
                             <i class="fa fa-eye"></i>Detail
