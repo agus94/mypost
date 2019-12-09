@@ -48,7 +48,13 @@
                     <td class="text-right"><?= $data->qty; ?></td>
                     <td class="text-center"><?= indo_date($data->date); ?></td>
                     <td class="text-center" width="160px">
-                        <a  class="btn btn-default btn-xs">
+                        <a  class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-detail" 
+                        data-barcode="<?= $data->barcode; ?>"
+                        data-itemname="<?= $data->item_name; ?>"
+                        data-suppliername="<?= $data->supplier_name; ?>"
+                        data-qty="<?= $data->qty; ?>"
+                        data-date="<?= indo_date($data->date); ?>"
+                        ">
                             <i class="fa fa-eye"></i>Detail
                         </a>
                         <a href="<?= site_url('stock/in/del/'.$data->stock_id.'/'.$data->item_id); ?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
