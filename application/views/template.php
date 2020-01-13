@@ -177,8 +177,8 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i> Sales</a></li>
                 <li <?=$this->uri->segment(1) == 'stock' && $this->uri->segment(2) == 'in' ? 'class="active"' : '' ?>>
                 <a href="<?= site_url('stock/in') ?>"><i class="fa fa-circle-o"></i> Stock In</a>
-                </li>
-                <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Stock Out</a></li>
+                <li <?=$this->uri->segment(1) == 'stock' && $this->uri->segment(2) == 'out' ? 'class="active"' : '' ?>>
+                <a href="<?= site_url('stock/out') ?>"><i class="fa fa-circle-o"></i> Stock Out</a></>
               </ul>
         </li>
 		

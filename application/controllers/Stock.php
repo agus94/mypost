@@ -39,7 +39,22 @@ class Stock extends CI_Controller {
         redirect('stock/in');
     }
 
-    public function process() {
+    public function stock_out_data() {
+        $data['row'] = $this->stock_m->get_stock_out()->result();
+        $this->template->load('template', 'transaction/stock_out/stock_out_data', $data);
+    }
+
+    public function stock_out_add() {
+        $item = $this->item_m->get()->result();
+        $supplier = $this->supplier_m->get()->result();
+        $data = [
+            'item' => $item,
+            'supplier' => $supplier
+        ];
+        $this->template->load('template', 'transaction/stock_out/stock_out_form', $data);
+    }
+
+    public function process() { 
         if(isset($_POST['in_add'])) {
             $post = $this->input->post(null, TRUE);
             $this->stock_m->add_stock_in($post);
@@ -48,7 +63,16 @@ class Stock extends CI_Controller {
                 $this->session->set_flashdata('success', 'Data Stock-In berhasil disimpan');
             }
             redirect('stock/in');
+        } elseif(isset($_POST['out_add'])) {
+            $post = $this->input->post(null, TRUE);
+            $this->stock_m->add_stock_out($post);
+            $this->item_m->update_stock_out($post); 
+            if($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata('success', 'Data Stock-Out berhasil disimpan');
+            }
+            redirect('stock/out');
         }
     }
+
     
 }
