@@ -55,10 +55,10 @@
                         data-suppliername="<?= $data->supplier_name; ?>"
                         data-qty="<?= $data->qty; ?>"
                         data-date="<?= indo_date($data->date); ?>"
-                        ">
+                        >
                             <i class="fa fa-eye"></i>Detail
                         </a>
-                        <a href="<?= site_url('stock/in/del/'.$data->stock_id.'/'.$data->item_id); ?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
+                        <a href="<?= site_url('stock/out/del/'.$data->stock_id.'/'.$data->item_id); ?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
                             <i class="fa fa-trash"></i>Delete
                         </a>
                     </td>
@@ -101,7 +101,7 @@
                         <tr>
                             <th>Date</th>
                             <td><span id="date"></span></td>
-                        </tr>
+                        </tr> 
                     </tbody>
                 </table>
             </div>
@@ -120,8 +120,7 @@ $(document).ready(function() {
         var date = $(this).data('date');
         $('#barcode').text(barcode);
         $('#item_name').text(itemname);
-        $('#detail').text(detail)
-        $('#supplier_name').text(suppliername);
+        $('#detail').text(detail);
         $('#qty').text(qty);
         $('#date').text(date);
         $('#detail').text('detail');
